@@ -14,3 +14,6 @@ If you are using linux or macOS, just download the source code and run. The only
 + In `converce.css`, border radius have been added and some colors have been adjusted.
 + In `converce.js`, app's name, logo and some of the text have been modified.
 + The project is based on `Converse v10.1.7`
+
+## Screenshots
+![image](https://github.com/EZ118/xinny/assets/79049368/39c652e4-f493-4173-9504-861b53afb1d3)
