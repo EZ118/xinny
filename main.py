@@ -1,11 +1,30 @@
 import webview
 import os
+import sys
+import pathlib
+def get_datadir():
+    data_dir = 'xinny-app'
+    home = pathlib.Path.home()
+    final_path = ''
 
-user_data_path = os.path.join(os.getenv('LOCALAPPDATA'), 'xinny-app')
+    if sys.platform == "win32":
+        final_path = home / "AppData/Local" / data_dir
+    elif sys.platform == "linux":
+        final_path = home / ".local/share" / data_dir
+    elif sys.platform == "darwin":
+        final_path = home / "Library/Application Support" / data_dir
+    else:
+        print("Unsupported platform")
+        final_path = ''
+    
+    final_path = str(final_path)
 
-# 如果目录不存在，创建该目录
-if not os.path.exists(user_data_path):
-    os.makedirs(user_data_path)
+    if not os.path.exists(final_path):
+        os.makedirs(final_path)
+    
+    return final_path
+
+user_data_path = get_datadir()
 
 webview.settings['OPEN_DEVTOOLS_IN_DEBUG'] = False
 webview.settings['ALLOW_DOWNLOADS'] = True
